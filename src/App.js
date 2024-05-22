@@ -20,7 +20,7 @@ function App() {
     <Router>
       <div className="App">
         <header>
-          {/* <Navbar /> */}
+          <Navbar />
         </header>
 
         {/* <section> */}
