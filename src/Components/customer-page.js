@@ -1,19 +1,22 @@
 import { Button,Card,Col,Container,Form,Image,Row,InputGroup} from "react-bootstrap";
-import img1 from "../assets/images/costomer.jpg";
+import img1 from "../assets/images/costomer1.jpg";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 export default function Customer_page() {
   return (
     <div>
+       <Navbar/> 
       <Container fluid>
         <Row className="">
           <Col className="p-4 wlc_card align-content-center" sm={12} md={12} lg={6}>
-              <Link to="/ForWorkSpace"><Button className='btn btn-light btn-outline-dark'><IoIosArrowBack /> Back</Button></Link>
+         <Link to="/ForWorkSpace"><Button className='btn btn-light btn-outline-dark'><IoIosArrowBack /> Back</Button></Link>
             <Card className="p-4 main_card">
-              <h2 className="container"> <strong>For Your Employees</strong> </h2>
+              <h2 className="container"> <strong>For your Customers</strong> </h2>
               <p className="container"> We're always looking to work with the best spaces around the world. </p>
               <Form >
                 <div className="d-flex flex-wrap">
@@ -71,6 +74,7 @@ export default function Customer_page() {
           </Col>
         </Row>
       </Container>
+      <Footer/>
     </div>
   );
 }

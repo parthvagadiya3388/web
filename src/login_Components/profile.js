@@ -12,7 +12,7 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import { GrLocation } from 'react-icons/gr';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 import { IoBagHandle } from 'react-icons/io5';
-import Profile_header from './profile_header';
+import Profile_header from './profile-header';
 import { AuthContext } from './AuthContext';
 
 

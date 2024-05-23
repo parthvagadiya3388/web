@@ -2,8 +2,8 @@ import React from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import img1 from "../assets/images/office1.jpg";
 import { FaCheckCircle } from "react-icons/fa";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 const Items = [
   'Global accessibility' ,

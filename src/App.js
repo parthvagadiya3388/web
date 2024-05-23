@@ -1,20 +1,20 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Navbar from "./Components/Navbar";
-import Welcome from "./Components/Welcome";
-import AboutUs from "./Components/AboutUs";
-import Forbuissness from "./Components/Forbuissness";
-import Footer from "./Components/Footer";
-import ForworkSpace from "./Components/forworkSpace";
-import Customer_page from "./Components/customer_page";
-import Employe_page from "./Components/employe_page";
-import List_item_page from "./Components/list_item_page";
+import Navbar from "./Components/navbar";
+import Welcome from "./Components/welcome-page";
+import AboutUs from "./Components/about-us";
+import Forbuissness from "./Components/for-buissness";
+import ForworkSpace from "./Components/for-workspace";
+import Customer_page from "./Components/customer-page";
+import Employe_page from "./Components/employe-page";
+import List_item_page from "./Components/searching-page";
 import Profile from "./login_Components/profile";
 import Employe_list from "./login_Components/employe_list";
-import Order_Conform from "./Components/order_Conform";
-import Payment_method from "./Components/payment_method";
+import Order_Conform from "./Components/order-conform";
+import Payment_method from "./Components/payment-method";
 import { AuthProvider } from "./login_Components/AuthContext";
+import Footer from "./Components/footer";
 
 function App() {
   return (

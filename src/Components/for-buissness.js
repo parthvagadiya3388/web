@@ -7,8 +7,8 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import { useFormik } from "formik";
 import * as yup from 'yup';
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
   const initialValues = {
     name : "",

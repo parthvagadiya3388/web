@@ -1,14 +1,13 @@
-import { Button } from 'bootstrap'
 import React from 'react'
 import { Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
 import img1 from "../assets/images/asset 14.jpeg";
 import img2 from "../assets/images/asset 9.jpeg";
 import img3 from "../assets/images/asset 19.jpeg";
 import img4 from "../assets/images/asset 10.jpeg";
-import { Link } from 'react-router-dom';
-import Profile_header from '../login_Components/profile_header';
+import Profile_header from '../login_Components/profile-header';
+import Productcard from './product-card';
 
-const Datas = [
+const productdata = [
   {
     id: 0,
     title: 'Creola Katherine Johnson',
@@ -44,7 +43,7 @@ export default function List_item_page() {
   return (
     <>
     <Profile_header title="Tony Patel"/>
-    <Container fluid>
+    <Container>
 
         <Row className="">
           <Col className="p-4 wlc_card" sm={12} md={12} lg={6}>
@@ -63,7 +62,6 @@ export default function List_item_page() {
                 <button className='btn btn-primary border_radias'>Search</button>
                 </InputGroup.Text>
             </div>
-    
 
             <div className="w-100 d-flex justify-content-between flex-wrap">
                     <select className="form-select col-md-4 col-sm-6 mt-2 drops_radis" aria-label="Select workspace type" defaultValue="Workspace type">
@@ -92,23 +90,12 @@ export default function List_item_page() {
                     </select>
               </div> <hr />
 
-            {Datas.map((Data) => 
-                <div className="card mt-2 border_radias"  key={Data.id}>
-                <div className='d-flex flex-wrap product_card_body_div'>
-                    <div className='col-sm-4 pl-0 pr-0 bg-black Product_imag_div'>
-                        <img src={Data.image} className="w-100 h-100 object-fit-cover product_image"/>
-                    </div>
-                    <div className="card-body col-sm-8">
-                        <div className="d-flex justify-content-between align-items-center">
-                            <h5 className="card-title">{Data.title}</h5>
-                            <span className="badge bg-warning text-white">{Data.rating} ★</span>
-                        </div>
-                        <p className="card-text p-0 m-0">{Data.location}</p> <br/>
-                        <Link to="/order" className="btn btn-light btn-outline-primary border_radias">Book Now!</Link>
-                    </div>
-                </div>
+            {productdata.map((card) => 
+                <div className="card mt-2 border_radias p-2"  key={card.id}>
+                  <Productcard image={card.image} title={card.title} rating={card.rating} location={card.location} showButton={true} cardbackside={false} ratingShow={true}/>
                </div>
             )}
+            
           </Col>
 
           <Col sm={12} md={12} lg={6} className="image_main">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Profile_header from "../login_Components/profile_header";
-import Payment_Card from "./payment_Card";
+import Profile_header from "../login_Components/profile-header";
+import Payment_Card from "./payment-card";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { Button,Card,Col,Container,Form,Image,Row,InputGroup} from "react-bootstrap";

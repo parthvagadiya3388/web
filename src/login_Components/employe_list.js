@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { FaEye, FaUser, FaUserShield, FaUsers } from "react-icons/fa";
 import { MdDeleteForever, MdEmail, MdOutlineDeleteOutline } from "react-icons/md";
 import img4 from '../assets/images/profile.jpeg';
-import Profile_header from './profile_header';
+import Profile_header from './profile-header';
 import { LuUsers } from 'react-icons/lu';
 import { GoLocation } from 'react-icons/go';
 import { TiEdit } from 'react-icons/ti';

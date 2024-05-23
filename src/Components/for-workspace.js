@@ -2,8 +2,8 @@ import { Button,Card,Col,Container,Form,Image,Row,InputGroup} from "react-bootst
 import img1 from "../assets/images/workimg.jpg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 export default function ForWorkSpace() {
 
