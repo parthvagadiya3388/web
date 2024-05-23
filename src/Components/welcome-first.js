@@ -19,8 +19,8 @@ export default function Welcome1() {
   const { setUser } = useContext(AuthContext);
 
   const schema = yup.object().shape({
-    email: yup.string().trim().email().required(),
-    password:yup.string().required(),
+    email: yup.string().trim().email().required("Email is required field*"),
+    password:yup.string().required("Password is a required field*"),
   });
 
    const Formik = useFormik({ 

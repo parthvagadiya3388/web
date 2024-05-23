@@ -21,11 +21,11 @@ import Footer from "./footer";
 export default function Forbuissness() {
 
   const schema = yup.object().shape({
-    name: yup.string().trim().required(),
-    position: yup.string().trim().required(),
-    phone: yup.string().trim().required(),
-    email: yup.string().trim().email().required(),
-    address: yup.string().trim().required(),
+    name: yup.string().trim().required("Name is a required field*"),
+    position: yup.string().trim().required("Position is a required field*"),
+    phone: yup.string().trim().required("Email is a required field*"),  
+    email: yup.string().trim().email().required("Phone is a required field*"),
+    address: yup.string().trim().required("Address is a required field*"),
   });
 
   const Formik = useFormik({
