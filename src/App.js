@@ -14,6 +14,7 @@ import Profile from "./login_Components/profile";
 import Employe_list from "./login_Components/employe_list";
 import Order_Conform from "./Components/order_Conform";
 import Payment_method from "./Components/payment_method";
+import { AuthProvider } from "./login_Components/AuthContext";
 
 function App() {
   return (
@@ -24,21 +25,23 @@ function App() {
         </header>
 
         {/* <section> */}
-          <Routes>
-            <Route path="/Navbar" element={<Navbar />} />
-            <Route path="/Welcome" element={<Welcome />} />
-            <Route path="/Aboutus" element={<AboutUs />} />
-            <Route path="/Forbussiness" element={<Forbuissness />} />
-            <Route path="/ForWorkSpace" element={<ForworkSpace />} />
-            <Route path="/yourCostomer" element={<Customer_page />} />
-            <Route path="/yourEmployee" element={<Employe_page />} />
-            <Route path="/search" element={<List_item_page />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/emplist" element={<Employe_list />} />
-            <Route path="/order" element={<Order_Conform />} />
-            <Route path="/payment" element={<Payment_method />} />
-            <Route path="/footer" element={<Footer />} />
-          </Routes>
+        <AuthProvider>
+            <Routes>
+              <Route path="/Navbar" element={<Navbar />} />
+              <Route path="/Welcome" element={<Welcome />} />
+              <Route path="/Aboutus" element={<AboutUs />} />
+              <Route path="/Forbussiness" element={<Forbuissness />} />
+              <Route path="/ForWorkSpace" element={<ForworkSpace />} />
+              <Route path="/yourCostomer" element={<Customer_page />} />
+              <Route path="/yourEmployee" element={<Employe_page />} />
+              <Route path="/search" element={<List_item_page />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/emplist" element={<Employe_list />} />
+              <Route path="/order" element={<Order_Conform />} />
+              <Route path="/payment" element={<Payment_method />} />
+              <Route path="/footer" element={<Footer />} />
+            </Routes>
+          </AuthProvider> 
         {/* </section> */}
       </div>
 

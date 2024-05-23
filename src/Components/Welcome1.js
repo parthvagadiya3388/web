@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Card, Col, Container, Form, Image, Row, InputGroup } from "react-bootstrap";
 import { FiMail, FiLock } from 'react-icons/fi'; 
 import img1 from '../assets/images/cofee.jpg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from 'yup';
+import { AuthContext} from "../login_Components/AuthContext";
+
+
+  export const initialValues = {
+    email: "",
+    password:"",
+  }
 
 export default function Welcome1() {
+
+  const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
+
+  const schema = yup.object().shape({
+    email: yup.string().trim().email().required(),
+    password:yup.string().required(),
+  });
+
+   const Formik = useFormik({ 
+    initialValues : initialValues,
+    validationSchema: schema,  
+    onSubmit : (value,{resetForm}) => {
+        setUser(value);
+        console.log(value);
+
+        if (Object.keys(Formik.errors).length === 0) {
+          navigate('/profile');
+        }
+        resetForm();
+    }
+  })
+
   return (
     <>
       <Container fluid>
@@ -14,32 +46,34 @@ export default function Welcome1() {
               <h2><strong>Welcome Back</strong></h2>
               <p>Please Enter Your Details</p>
               <div className="d-flex">
-                <Button className="col-6 button bg-light text-dark Submit_button border-0 btn-outline-primary"><label className="w-100 h-100 mt-1 bussines_button"><input type="radio" name="for" /> For Business</label> </Button>
+                <Button className="col-6 button bg-light text-dark Submit_button border-0 btn-outline-primary"><label className="w-100 h-100 mt-1 bussines_button"><input type="radio" name="for" defaultChecked /> For Business</label> </Button>
                 <Button className="col-6 button ml-1 bg-light text-dark Submit_button border-0"><label className="w-100 h-100 mt-1 enq_button"><input type="radio" name="for" /> For Enquiry</label></Button>
               </div>
               <br />
-              <Form className="">
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form className="" onSubmit={Formik.handleSubmit}>
+                <Form.Group className="mb-3" controlId="email">
                   <Form.Label><strong>Email</strong></Form.Label>
                   <InputGroup>
                     <InputGroup.Text><FiMail /></InputGroup.Text> 
-                    <Form.Control type="email" placeholder="Enter email" />
+                    {/* <Form.Control type="email" placeholder="Enter email" /> */}
+                    <Form.Control className="radius" type="email" placeholder="Enter your email"  value={Formik.values.email} onChange={Formik.handleChange}  />
                   </InputGroup>
+                  <p className="Error_Msg">{Formik.errors.email}</p>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" controlId="password">
                   <Form.Label><strong>Password</strong></Form.Label>
                   <InputGroup>
                     <InputGroup.Text><FiLock /></InputGroup.Text> 
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder="Password" value={Formik.values.password} onChange={Formik.handleChange} />
                   </InputGroup>
+                  <p className="Error_Msg">{Formik.errors.password}</p>
                 </Form.Group>
-              </Form>
-              <Link to="/profile">  
+
                   <Button className="Submit_button w-100" variant="primary" type="submit">
                   Gate Access
                   </Button>
-              </Link>
+              </Form>
             </Card>
           </Col>
           <Col sm={12} md={12} lg={7} className="h-100 image_main">

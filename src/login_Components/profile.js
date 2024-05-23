@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import img4 from '../assets/images/profile.jpeg';
 import { Link } from 'react-router-dom';
 import { Button,Card,Col,Container,Form ,Row,InputGroup} from "react-bootstrap";
@@ -13,8 +13,22 @@ import { GrLocation } from 'react-icons/gr';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 import { IoBagHandle } from 'react-icons/io5';
 import Profile_header from './profile_header';
+import { AuthContext } from './AuthContext';
+
 
 export default function Profile() {
+
+  const { user } = useContext(AuthContext);
+  const [email , setEmail] = useState();
+
+  useEffect(() => {
+    setEmail(user.email);
+  }, [user.email]);
+
+  function handelEvent(e) {
+    setEmail(e.target.value);
+  }
+
   return (
     <>  
     <Profile_header title="Tony Patel"/>
@@ -115,7 +129,8 @@ export default function Profile() {
                         <InputGroup.Text className="radius">
                           <MdEmail />
                         </InputGroup.Text>
-                        <Form.Control className="radius" type="email" placeholder="Enter your Email" id="email"  />
+                        <Form.Control className="radius" type="email" placeholder="Enter your Email" id="email"  value={email}
+                          onChange={handelEvent}  />
                       </InputGroup>
                     </Form.Group>
                   </Col>

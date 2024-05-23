@@ -33,7 +33,7 @@ export default function Payment_Card() {
                     <Card.Text>Tax</Card.Text>
                     <Card.Title>${tax.toFixed(2)}</Card.Title>
                 </div>
-
+                
                 <hr className='HRtage'/>
 
                 <div className='d-flex justify-content-between'>
