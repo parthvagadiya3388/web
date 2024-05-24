@@ -20,18 +20,40 @@ export default function Profile() {
 
   const { user } = useContext(AuthContext);
   const [email , setEmail] = useState();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [address , setAddress] = useState();
+  const [phone , setPhone] = useState();
+  const [position , setPosition] = useState();
 
   useEffect(() => {
     setEmail(user.email);
-  }, [user.email]);
-
-  function handelEvent(e) {
-    setEmail(e.target.value);
+    const [first, last] = user.name.split(' ');
+    setFirstName(first);
+    setLastName(last);
+    setAddress(user.address);
+    setPhone(user.phone);
+    setPosition(user.position);
+  }, [user]);
+  
+  function handleInputChange(setter) {
+    return function(e) {
+      setter(e.target.value);
+    };
   }
+  
+  const handleEmailChange = handleInputChange(setEmail);
+  const handleAddressChange = handleInputChange(setAddress);
+  const handlePhoneChange = handleInputChange(setPhone);
+  const handlePositionChange = handleInputChange(setPosition);
+  const handleFirstNameChange = handleInputChange(setFirstName);
+  const handleLastNameChange = handleInputChange(setLastName);
 
+  const fullname = firstName +" "+ lastName;
+  
   return (
     <>  
-    <Profile_header title="Tony Patel"/>
+    <Profile_header title={fullname}/>
     <Container>
       <Row>
             <div className='pt-2 text-md-start text-sm-center text-center'>
@@ -80,7 +102,7 @@ export default function Profile() {
                             </div>
                             <div className="card-body col-sm-8">
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <h4 className="card-title Prof_name">Jerry wilson</h4>
+                                    <h4 className="card-title Prof_name" >{firstName} {lastName}</h4>
                                 </div>
                                 <p className="card-text p-0 m-0 Prof_compnay_name">Bank of America</p> <br/>
                                 <div className='Profile_button_div'>
@@ -101,7 +123,7 @@ export default function Profile() {
                         <InputGroup.Text className="radius">
                           <FaUser />
                         </InputGroup.Text>
-                        <Form.Control className="radius" type="fname" placeholder="Enter your First Name" id="firstname"   />
+                        <Form.Control className="radius" type="fname" placeholder="Enter your First Name" id="firstname" value={firstName} onChange={handleFirstNameChange}   />
                       </InputGroup>
                     </Form.Group>
                   </Col>
@@ -115,7 +137,7 @@ export default function Profile() {
                         <InputGroup.Text className="radius">
                           <FaUser />
                         </InputGroup.Text>
-                        <Form.Control className="radius" type="lname" placeholder="Enter your Last Name" id="lastname"  />
+                        <Form.Control className="radius" type="lname" placeholder="Enter your Last Name" id="lastname" value={lastName} onChange={handleLastNameChange} />
                       </InputGroup>
                     </Form.Group>
                   </Col>
@@ -130,7 +152,7 @@ export default function Profile() {
                           <MdEmail />
                         </InputGroup.Text>
                         <Form.Control className="radius" type="email" placeholder="Enter your Email" id="email"  value={email}
-                          onChange={handelEvent}  />
+                          onChange={handleEmailChange}  />
                       </InputGroup>
                     </Form.Group>
                   </Col>
@@ -143,6 +165,8 @@ export default function Profile() {
                       <PhoneInput
                         country={"in"}
                         id="phone"
+                        value={phone}
+                        onChange={handlePhoneChange}
                       />
                     </Form.Group> 
                   </Col>
@@ -170,7 +194,7 @@ export default function Profile() {
                         <InputGroup.Text className="radius">
                         <TbHexagonLetterUFilled />
                         </InputGroup.Text>
-                        <Form.Control className="radius" type="desingnation" placeholder="Enter your Designation" id="designation"   />
+                        <Form.Control className="radius" type="desingnation" placeholder="Enter your Designation" id="designation" value={position}  onChange={handlePositionChange}  />
                       </InputGroup>
                     </Form.Group>
                   </Col>
@@ -185,7 +209,9 @@ export default function Profile() {
                         as="textarea"
                         type="address"
                         id="address"
+                        value={address}
                         placeholder="Enter your workspace Address"
+                        onChange={handleAddressChange}
                       />
                     </Form.Group>
                   </Col>

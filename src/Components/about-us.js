@@ -5,7 +5,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
-const Items = [
+const services = [
   'Global accessibility' ,
   'Priority Services and Amenities',
   'Tailored Safety Measeres',
@@ -18,13 +18,13 @@ const Items = [
 
 export default function AboutUs() {
 
-  const firstHalf = Items.slice(0 , 4);
-  const secondHalf = Items.slice(4 , 8);
+  const firstHalf = services.slice(0 , 4);
+  const secondHalf = services.slice(4 , 8);
 
-  const listItems1 = firstHalf.map((first , index) =>
+  const listservices1 = firstHalf.map((first , index) =>
     <li key={index}><FaCheckCircle/> {first}</li>
   );
-  const listItems2 = secondHalf.map((second , index) =>
+  const listservices2 = secondHalf.map((second , index) =>
     <li key={index}><FaCheckCircle/> {second}</li>
   );
 
@@ -75,10 +75,10 @@ export default function AboutUs() {
             </div>
             <div className="list_item d-flex flex-wrap">
               <ul className="List_ul">
-                  {listItems1}
+                  {listservices1}
               </ul> 
               <ul className="List_ul">
-                  {listItems2}
+                  {listservices2}
               </ul> 
             </div>
           </Col>

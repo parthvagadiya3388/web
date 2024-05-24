@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, Col, Container, Form, Image, Row, InputGroup } from "react-bootstrap";
 import { FiMail, FiLock } from 'react-icons/fi'; 
 import img1 from '../assets/images/cofee.jpg';
@@ -8,34 +8,47 @@ import * as yup from 'yup';
 import { AuthContext} from "../login_Components/AuthContext";
 
 
-  export const initialValues = {
-    email: "",
-    password:"",
-  }
+export const initialValues = {
+  email: "shivam@gmail.com",
+  password: "5555",
+}
 
 export default function Welcome1() {
-
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
+  const [userNames, setUserNames] = useState([]);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('formData')) || [];
+    setUserNames(data);
+  }, []);
 
   const schema = yup.object().shape({
     email: yup.string().trim().email().required("Email is required field*"),
-    password:yup.string().required("Password is a required field*"),
+    password: yup.string().required("Password is a required field*"),
   });
 
-   const Formik = useFormik({ 
-    initialValues : initialValues,
+  const Formik = useFormik({ 
+    initialValues: initialValues,
     validationSchema: schema,  
-    onSubmit : (value,{resetForm}) => {
-        setUser(value);
-        console.log(value);
+    onSubmit: (values, { resetForm }) => {
+      const user = userNames.find(
+        user => user.email === values.email && user.password === values.password
+      );
 
-        if (Object.keys(Formik.errors).length === 0) {
-          navigate('/profile');
-        }
-        resetForm();
+      if (user) {
+        setUser(user);
+        console.log(user);
+        navigate('/profile');
+      } else {
+        alert("Invalid email or password");
+        Formik.setErrors({ email: "Invalid email or password", password: "Invalid email or password" });
+      }
+
+      resetForm();
+
     }
-  })
+  });
 
   return (
     <>
