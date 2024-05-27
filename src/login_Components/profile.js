@@ -14,18 +14,16 @@ import { AiOutlineUserDelete } from 'react-icons/ai';
 import { IoBagCheckSharp, IoBagHandle } from 'react-icons/io5';
 import Profile_header from './profile-header';
 import { AuthContext } from './AuthContext';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFirstName, setLastName } from '../redux/reducer/nameSlice';
+import { GoLocation } from 'react-icons/go';
 import { LuUsers } from 'react-icons/lu';
 
 
 export default function Profile() {
 
-
   const { user } = useContext(AuthContext);
-  const [firstName , setFirstName] = useState();
-  const [lastName , setLastName] = useState();
   const [email , setEmail] = useState();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [address , setAddress] = useState();
   const [phone , setPhone] = useState();
   const [position , setPosition] = useState();
@@ -34,7 +32,7 @@ export default function Profile() {
     setEmail(user.email);
     const [first, last] = user.name.split(' ');
     setFirstName(first);
-    setFirstName(last);
+    setLastName(last);
     setAddress(user.address);
     setPhone(user.phone);
     setPosition(user.position);
@@ -52,12 +50,12 @@ export default function Profile() {
   const handleFirstNameChange = handleInputChange(setFirstName);
   const handleLastNameChange = handleInputChange(setLastName);
 
+  const fullname = firstName +" "+ lastName;
+  
   const handlePhoneChange = (value) => {
     setPhone(value);
   };
 
-  const fullname = firstName +" "+ lastName;
-  
   return (
     <>  
     <Profile_header title={fullname}/>
@@ -68,45 +66,45 @@ export default function Profile() {
                 <p>Lorem ipsum dolor sit amet.</p>
             </div>  
         <Col md={3} className='p-2'>
-          <div className="p-3 Profile_Side_bar border_radias">
-            <ul className="nav flex-column">
-              <li className="nav-item">
-                <Link className="nav-link active btn btn-primary radius text-start" >
-                <CiUser /> Personal Information
-                </Link> 
-              </li>
-                        <li className="nav-item">
-                            <Link className="nav-link  btn btn-primary radius text-start text-dark" href="#">
-                            <IoBagCheckSharp /> Space Information
-                            </Link> 
-                        </li>
-              <li className="nav-item">
-                <Link className="nav-link text-dark btn btn-primary radius text-start" to="/emplist" >
-                <LuUsers /> Employees
-                </Link> 
-              </li>
-                        <li className="nav-item">
-                            <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
-                            <FaUsers /> Customers
-                            </Link>
-                        </li>
-              <li className="nav-item">
-                <Link className="nav-link text-dark btn btn-primary radius text-start" to="/search">
-                <GrLocation /> Change Location
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
-                <RiLockPasswordLine />  Change Password
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
-                <AiOutlineUserDelete /> Delete Account
-                </Link>
-              </li>
-            </ul>
-          </div>
+        <div className="p-3 Profile_Side_bar border_radias">
+              <ul className="nav flex-column">
+                <li className="nav-item">
+                  <Link className="nav-link active btn btn-primary radius text-start text-white" to="/profile">
+                    <FaUser /> Personal Information
+                  </Link> 
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link  btn btn-primary radius text-start text-dark" href="#">
+                    <IoBagCheckSharp /> Space Information
+                  </Link> 
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark btn btn-primary radius text-start" to="/emplist">
+                    <LuUsers /> Employees
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
+                    <FaUsers /> Customers
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark btn btn-primary radius text-start" to="/search">
+                    <GoLocation /> Change Location
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
+                    <RiLockPasswordLine /> Change Password
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
+                    <AiOutlineUserDelete /> Delete Account
+                  </Link>
+                </li>
+              </ul>
+            </div>
         </Col>
 
         <Col className="wlc_card align-content-center" md={9}> 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Profile_header from "../login_Components/profile-header";
 import Payment_Card from "./payment-card";
 import { Link } from "react-router-dom";
@@ -6,9 +6,12 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Button,Card,Col,Container,Form,Image,Row,InputGroup} from "react-bootstrap";
 import { MdEmail } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
+import { ProductContext } from "../login_Components/ProductContext";
 
 export default function Payment_method() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('CreditCard');
+  const { selectedProduct } = useContext(ProductContext);
+
 
   return (
     <>
@@ -113,7 +116,7 @@ export default function Payment_method() {
 
           <Col sm={12} md={12} lg={5}>
             <div className="w-100 h-auto">
-              <Payment_Card />
+              <Payment_Card location={selectedProduct.location} />
             </div>
           </Col>
         </Row>

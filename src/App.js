@@ -15,6 +15,7 @@ import Order_Conform from "./Components/order-conform";
 import Payment_method from "./Components/payment-method";
 import { AuthProvider } from "./login_Components/AuthContext";
 import Footer from "./Components/footer";
+import { ProductProvider } from "./login_Components/ProductContext";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         </header>
 
         {/* <section> */}
+        <ProductProvider>
         <AuthProvider>
             <Routes>
               <Route path="/Navbar" element={<Navbar />} />
@@ -42,6 +44,7 @@ function App() {
               <Route path="/footer" element={<Footer />} />
             </Routes>
           </AuthProvider> 
+          </ProductProvider>
         {/* </section> */}
       </div>
 

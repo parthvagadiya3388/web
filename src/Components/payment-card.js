@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { ProductContext } from '../login_Components/ProductContext';
 
-export default function Payment_Card() {
-    const [amount, setAmount] = useState(0);
+export default function Payment_Card(props) {
+  const [amount, setAmount] = useState(0);
+  const { selectedProduct } = useContext(ProductContext);
 
-    function handleChange(e) {
-        setAmount(parseFloat(e.target.value));
+  useEffect(() => {
+    if (selectedProduct && selectedProduct.price) {
+      setAmount(parseFloat(selectedProduct.price));
     }
+  }, [selectedProduct]);
+
 
     const tax = amount * 0.1;
     const total = amount + tax;
@@ -17,17 +22,12 @@ export default function Payment_Card() {
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body className='Payment_card'>
                 <Card.Title>Order Summary</Card.Title>
-                <Card.Text> Barcelona, Barcelona 08005 </Card.Text>
+                <Card.Text> {props.location}</Card.Text>
                 <hr />
-
-                <div className='d-flex justify-content-between pb-2'>
-                    <h5 className='w-50'>Farm Rent</h5>
-                    <input type="number" className='form-control w-25' placeholder="000" value={amount} onChange={handleChange} />
-                </div>
 
                 <div className='d-flex justify-content-between'>
                     <Card.Text> Amount</Card.Text>
-                    <Card.Title>${amount.toFixed(2)}</Card.Title>
+                    <Card.Title>${selectedProduct.price}.00</Card.Title>
                 </div>
                 <div className='d-flex justify-content-between'>
                     <Card.Text>Tax</Card.Text>
@@ -41,6 +41,7 @@ export default function Payment_Card() {
                     <Card.Title>${total.toFixed(2)}</Card.Title>
                 </div>
                 <br />
+                
                 <Button className='w-100 Oder_coupun'><a href="#">Add coupon code here</a></Button>
                 <Link to="/payment">
                     <Button variant="primary" className='w-100 border_radias mt-4'>Checkout</Button>

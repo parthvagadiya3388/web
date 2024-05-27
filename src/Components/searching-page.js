@@ -6,6 +6,7 @@ import img3 from "../assets/images/asset 19.jpeg";
 import img4 from "../assets/images/asset 10.jpeg";
 import Profile_header from '../login_Components/profile-header';
 import Productcard from './product-card';
+import { ProductContext } from '../login_Components/ProductContext';
 
 const productdata = [
   {
@@ -13,33 +14,45 @@ const productdata = [
     title: 'Creola Katherine Johnson',
     location: 'Surat 395001',
     rating: 4.5,
-    image: img1
+    image: img1,
+    price:15,
   },
   {
     id: 1,
     title: 'Katherine Creola Johnson',  
     location: 'Amedabad 4545454',
     rating: 4.4,
-    image: img2
+    image: img2,
+    price:18,
   },
   {
     id: 2,
     title: 'Johnson Creola Katherine',
     location: 'Rajkot 784545',
     rating: 3.5,
-    image: img3
+    image: img3,
+    price:23,
   },
   {
     id: 3,
     title: 'Creola Katherine Johnson',
     location: 'Amedabad 985685',
     rating: 3.5,
-    image: img4
+    image: img4,
+    price:24,
   },
 ];
 
 
 export default function List_item_page() {
+
+
+  const { setSelectedProduct } = useContext(ProductContext);
+
+  const handleBookNow = (product) => {
+    setSelectedProduct(product);
+  };
+
   return (
     <>
     <Profile_header />
@@ -92,7 +105,7 @@ export default function List_item_page() {
 
             {productdata.map((card) => 
                 <div className="card mt-2 border_radias p-2"  key={card.id}>
-                  <Productcard image={card.image} title={card.title} rating={card.rating} location={card.location} showButton={true} cardbackside={false} ratingShow={true}/>
+                  <Productcard image={card.image} title={card.title} rating={card.rating} location={card.location} showButton={true} cardbackside={false} ratingShow={true} onBookNow={() => handleBookNow(card)}/>
                </div>
             )}
             

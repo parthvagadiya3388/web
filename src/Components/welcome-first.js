@@ -6,11 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from 'yup';
 import { AuthContext} from "../login_Components/AuthContext";
+import Navbar from "./navbar";
 
 
 export const initialValues = {
-  email: "shivam@gmail.com",
-  password: "5555",
+  // email: "shivam@gmail.com",
+  // password: "5555",
 }
 
 export default function Welcome1() {
