@@ -21,11 +21,10 @@ import { LuUsers } from 'react-icons/lu';
 
 export default function Profile() {
 
-  const dispatch = useDispatch();
-  const firstName = useSelector((state) => state.name.firstName);
-  const lastName = useSelector((state) => state.name.lastName);
 
   const { user } = useContext(AuthContext);
+  const [firstName , setFirstName] = useState();
+  const [lastName , setLastName] = useState();
   const [email , setEmail] = useState();
   const [address , setAddress] = useState();
   const [phone , setPhone] = useState();
@@ -34,12 +33,12 @@ export default function Profile() {
   useEffect(() => {
     setEmail(user.email);
     const [first, last] = user.name.split(' ');
-    dispatch(setFirstName(first));
-    dispatch(setLastName(last));
+    setFirstName(first);
+    setFirstName(last);
     setAddress(user.address);
     setPhone(user.phone);
     setPosition(user.position);
-  }, [user , dispatch ]);
+  }, [user]);
   
   function handleInputChange(setter) {
     return function(e) {
@@ -49,10 +48,13 @@ export default function Profile() {
   
   const handleEmailChange = handleInputChange(setEmail);
   const handleAddressChange = handleInputChange(setAddress);
-  const handlePhoneChange = handleInputChange(setPhone);
   const handlePositionChange = handleInputChange(setPosition);
   const handleFirstNameChange = handleInputChange(setFirstName);
   const handleLastNameChange = handleInputChange(setLastName);
+
+  const handlePhoneChange = (value) => {
+    setPhone(value);
+  };
 
   const fullname = firstName +" "+ lastName;
   
