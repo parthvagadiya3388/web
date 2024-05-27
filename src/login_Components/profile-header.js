@@ -1,14 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Col, Container, Offcanvas, Row, ListGroup } from 'react-bootstrap';
 import { FaCaretDown, FaSignOutAlt } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import img4 from '../assets/images/profile.jpeg'; // Replace this with your actual image path
+import { useDispatch, useSelector } from 'react-redux';
+import { AuthContext } from './AuthContext';
+import { setFirstName, setLastName } from '../redux/reducer/nameSlice';
 
 export default function ProfileHeader(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const dispatch = useDispatch();
+  const firstName = useSelector((state) => state.name.firstName);
+  const lastName = useSelector((state) => state.name.lastName);
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    const [first, last] = user.name.split(' ');
+    dispatch(setFirstName(first));
+    dispatch(setLastName(last));
+  }, [user , dispatch ]);
+  
+  const fullname = firstName +" "+ lastName;
+
 
   return (
     <>
@@ -25,7 +42,7 @@ export default function ProfileHeader(props) {
           </Col>
           <Col xs={6} className="text-end d-flex justify-content-end align-items-center p-0">
             <img src={img4} alt="Profile" className="rounded-circle" width="40" />
-            <span className="ms-1 me-0">{props.title}</span>
+            <span className="ms-1 me-0">{fullname}</span>
             <Button className='bg-white text-dark border-0' onClick={handleShow}>
               <FaCaretDown />
             </Button>
@@ -40,7 +57,7 @@ export default function ProfileHeader(props) {
             <hr />
             <div className="text-center mb-4">
               <img src={img4} alt="Profile" className="rounded-circle" width="60" />
-              <p>Carrer de Pallars, 194</p>
+              <p>{fullname}</p>
             </div> <hr />
             <ListGroup variant="flush">
               <ListGroup.Item action className='listGroup_profile text-primary'>

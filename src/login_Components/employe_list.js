@@ -71,7 +71,7 @@ export default function Employe_list() {
 
   return (
     <>  
-    <Profile_header title="Carrer De Pallars,194"/>
+    <Profile_header/>
 
     <Modal show={show}>
         <Card className="p-4 togl_card">
@@ -178,6 +178,11 @@ export default function Employe_list() {
                     <div className="p-3 Profile_Side_bar border_radias">
                         <ul className="nav flex-column">
                         <li className="nav-item">
+                            <Link className="nav-link  btn btn-primary radius text-start text-dark" to="/profile">
+                            <FaUser /> Personal Information
+                            </Link> 
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link  btn btn-primary radius text-start text-dark" href="#">
                             <IoBagCheckSharp /> Space Information
                             </Link> 
@@ -193,7 +198,7 @@ export default function Employe_list() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
+                            <Link className="nav-link text-dark btn btn-primary radius text-start" to="/search">
                             <GoLocation /> Change Location
                             </Link>
                         </li>

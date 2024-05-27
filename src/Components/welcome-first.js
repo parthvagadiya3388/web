@@ -84,11 +84,13 @@ export default function Welcome1() {
                 </Form.Group>
 
                   <Button className="Submit_button w-100" variant="primary" type="submit">
+                  
                   Gate Access
                   </Button>
               </Form>
             </Card>
           </Col>
+          
           <Col sm={12} md={12} lg={7} className="h-100 image_main">
             <Image className="Wel_img" src={img1}/>
           </Col>

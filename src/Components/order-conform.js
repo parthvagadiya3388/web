@@ -10,7 +10,7 @@ import Productcard from "./product-card";
 export default function Order_Conform() {
   return (
     <>
-      <Profile_header title="Tony Patel" />
+      <Profile_header />
       <Container>
         <Row>
           <Col className="wlc_card" sm={12} md={12} lg={7}>

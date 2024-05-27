@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
 import img1 from "../assets/images/asset 14.jpeg";
 import img2 from "../assets/images/asset 9.jpeg";
@@ -42,7 +42,7 @@ const productdata = [
 export default function List_item_page() {
   return (
     <>
-    <Profile_header title="Tony Patel"/>
+    <Profile_header />
     <Container>
 
         <Row className="">

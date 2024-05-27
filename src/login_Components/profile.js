@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import img4 from '../assets/images/profile.jpeg';
 import { Link } from 'react-router-dom';
 import { Button,Card,Col,Container,Form ,Row,InputGroup} from "react-bootstrap";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaUsers } from "react-icons/fa";
 import { MdEmail, MdOutlineDeleteOutline } from "react-icons/md";
 import { TbHelpHexagonFilled, TbHexagonLetterUFilled } from "react-icons/tb";
 import PhoneInput from "react-phone-input-2";
@@ -11,17 +11,22 @@ import { CiSearch, CiUser } from 'react-icons/ci';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { GrLocation } from 'react-icons/gr';
 import { AiOutlineUserDelete } from 'react-icons/ai';
-import { IoBagHandle } from 'react-icons/io5';
+import { IoBagCheckSharp, IoBagHandle } from 'react-icons/io5';
 import Profile_header from './profile-header';
 import { AuthContext } from './AuthContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFirstName, setLastName } from '../redux/reducer/nameSlice';
+import { LuUsers } from 'react-icons/lu';
 
 
 export default function Profile() {
 
+  const dispatch = useDispatch();
+  const firstName = useSelector((state) => state.name.firstName);
+  const lastName = useSelector((state) => state.name.lastName);
+
   const { user } = useContext(AuthContext);
   const [email , setEmail] = useState();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [address , setAddress] = useState();
   const [phone , setPhone] = useState();
   const [position , setPosition] = useState();
@@ -29,12 +34,12 @@ export default function Profile() {
   useEffect(() => {
     setEmail(user.email);
     const [first, last] = user.name.split(' ');
-    setFirstName(first);
-    setLastName(last);
+    dispatch(setFirstName(first));
+    dispatch(setLastName(last));
     setAddress(user.address);
     setPhone(user.phone);
     setPosition(user.position);
-  }, [user]);
+  }, [user , dispatch ]);
   
   function handleInputChange(setter) {
     return function(e) {
@@ -64,17 +69,27 @@ export default function Profile() {
           <div className="p-3 Profile_Side_bar border_radias">
             <ul className="nav flex-column">
               <li className="nav-item">
-                <Link className="nav-link text-dark btn btn-primary radius text-start" to="/search">
-                <CiSearch /> Search
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link active btn btn-primary radius text-start" >
                 <CiUser /> Personal Information
                 </Link> 
               </li>
+                        <li className="nav-item">
+                            <Link className="nav-link  btn btn-primary radius text-start text-dark" href="#">
+                            <IoBagCheckSharp /> Space Information
+                            </Link> 
+                        </li>
               <li className="nav-item">
-                <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
+                <Link className="nav-link text-dark btn btn-primary radius text-start" to="/emplist" >
+                <LuUsers /> Employees
+                </Link> 
+              </li>
+                        <li className="nav-item">
+                            <Link className="nav-link text-dark btn btn-primary radius text-start" href="#">
+                            <FaUsers /> Customers
+                            </Link>
+                        </li>
+              <li className="nav-item">
+                <Link className="nav-link text-dark btn btn-primary radius text-start" to="/search">
                 <GrLocation /> Change Location
                 </Link>
               </li>
@@ -217,7 +232,7 @@ export default function Profile() {
                   </Col>
                 </div>
                 <div className="container text-end">
-                    <Button className="Submit_button p-2" variant="primary" type="submit" >
+                    <Button className="Submit_button p-2" variant="primary" >
                       Update
                     </Button>
                 </div>
