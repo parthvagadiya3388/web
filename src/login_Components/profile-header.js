@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Col, Container, Offcanvas, Row, ListGroup } from 'react-bootstrap';
 import { FaCaretDown, FaSignOutAlt } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import img4 from '../assets/images/profile.jpeg'; // Replace this with your actual image path
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthContext } from './AuthContext';
@@ -60,29 +60,40 @@ export default function ProfileHeader(props) {
               <p>{fullname}</p>
             </div> <hr />
             <ListGroup variant="flush">
-              <ListGroup.Item action className='listGroup_profile text-primary'>
-                Personal Information <FaCaretDown className="float-end" />
+              <Link to="/profile" className='text-decoration-none'>
+                <ListGroup.Item action className='listGroup_profile text-primary'>
+                  Personal Information 
+                </ListGroup.Item>
+              </Link>
+              <Link to="/emplist" className='text-decoration-none'>
+                <ListGroup.Item action>
+                  Employees 
+                </ListGroup.Item>
+              </Link>
+              <ListGroup.Item action>
+                Space Information 
               </ListGroup.Item>
               <ListGroup.Item action>
-                Space Information <FaCaretDown className="float-end" />
+                Customers 
+              </ListGroup.Item>
+              <Link to="/search" className='text-decoration-none'>
+                <ListGroup.Item action>
+                  Change Location 
+                </ListGroup.Item>
+              </Link>
+              <ListGroup.Item action>
+                Change Password
               </ListGroup.Item>
               <ListGroup.Item action>
-                Customers <FaCaretDown className="float-end" />
-              </ListGroup.Item>
-              <ListGroup.Item action>
-                Change Location <FaCaretDown className="float-end" />
-              </ListGroup.Item>
-              <ListGroup.Item action>
-                Change Password <FaCaretDown className="float-end" />
-              </ListGroup.Item>
-              <ListGroup.Item action>
-                Delete Account <FaCaretDown className="float-end" />
+                Delete Account 
               </ListGroup.Item>
             </ListGroup> <hr />
             <div className="text-center mt-4">
-              <Button variant="outline-danger">
-                Sign out <FaSignOutAlt />
-              </Button>
+              <Link to="/welcome">
+                <Button variant="outline-danger">
+                  Sign out <FaSignOutAlt />
+                </Button>
+              </Link>
             </div> <hr />
           </Offcanvas.Body>
         </Offcanvas>
