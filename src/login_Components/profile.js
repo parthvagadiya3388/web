@@ -18,6 +18,7 @@ import { GoLocation } from 'react-icons/go';
 import { LuUsers } from 'react-icons/lu';
 
 
+
 export default function Profile() {
 
   const { user } = useContext(AuthContext);
@@ -26,7 +27,7 @@ export default function Profile() {
   const [lastName, setLastName] = useState('');
   const [address , setAddress] = useState();
   const [phone , setPhone] = useState();
-  const [position , setPosition] = useState();
+  // const [position , setPosition] = useState();
 
   useEffect(() => {
     setEmail(user.email);
