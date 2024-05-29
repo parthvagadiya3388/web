@@ -98,7 +98,7 @@ export default function Payment_method() {
                                 <Col md={3}>
                                     <Form.Group className="mb-3">
                                     <Form.Label>
-                                       CVD code*
+                                       CVC code*
                                     </Form.Label>
                                     <Form.Control
                                         className="radius"
