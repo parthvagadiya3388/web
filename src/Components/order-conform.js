@@ -12,6 +12,18 @@ export default function Order_Conform() {
 
   const { selectedProduct } = useContext(ProductContext);
 
+  if (!selectedProduct) {
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <p>Loading...</p>
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
+
   return (
     <>
       <Profile_header />

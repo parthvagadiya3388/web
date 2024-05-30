@@ -57,6 +57,8 @@ export default function Profile() {
     setPhone(value);
   };
 
+  
+
   return (
     <>  
     <Profile_header title={fullname}/>

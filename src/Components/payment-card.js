@@ -44,7 +44,7 @@ export default function Payment_Card(props) {
                 <br />
                 
                 <Button className='w-100 Oder_coupun'><a href="#">Add coupon code here</a></Button>
-                <Link to="https://buy.stripe.com/test_eVa2b84k798E98scMN">
+                <Link to="https://buy.stripe.com/test_8wMeXU2bZ5WsgAUaEG">
                     <Button variant="primary" className='w-100 border_radias mt-4'>checkout</Button>
                 </Link>
             </Card.Body>

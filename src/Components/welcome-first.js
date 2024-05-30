@@ -17,6 +17,7 @@ export default function Welcome1() {
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
   const [userNames, setUserNames] = useState([]);
+  const [invalidError , setInvalidError] = useState();
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('formData')) || [];
@@ -41,7 +42,7 @@ export default function Welcome1() {
         console.log(user);
         navigate('/profile');
       } else {
-        alert("Invalid email or password");
+        setInvalidError("Invalid email or password. Please try again later.");
         Formik.setErrors({ email: "Invalid email or password", password: "Invalid email or password" });
       }
 
@@ -63,6 +64,7 @@ export default function Welcome1() {
                 <Button className="col-6 button ml-1 bg-light text-dark Submit_button border-0"><label className="w-100 h-100 mt-1 enq_button"><input type="radio" name="for" /> For Enquiry</label></Button>
               </div>
               <br />
+              {invalidError && <p className="Error_Msg">{invalidError}</p>}
               <Form className="" onSubmit={Formik.handleSubmit}>
                 <Form.Group className="mb-3" controlId="email">
                   <Form.Label><strong>Email</strong></Form.Label>
