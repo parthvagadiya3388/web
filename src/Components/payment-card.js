@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { ProductContext } from '../login_Components/ProductContext';
-import { loadStripe } from '@stripe/stripe-js';
 
 export default function Payment_Card(props) {
   const [amount, setAmount] = useState(0);

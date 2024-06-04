@@ -42,6 +42,7 @@ function App() {
               <Route path="/emplist" element={<Employe_list />} />
               <Route path="/order" element={<Order_Conform />} />
               <Route path="/payment" element={<Payment_method />} />
+              
               <Route path="/footer" element={<Footer />} />
             </Routes>
           </AuthProvider> 

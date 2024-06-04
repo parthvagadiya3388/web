@@ -17,8 +17,6 @@ import { AuthContext } from './AuthContext';
 import { GoLocation } from 'react-icons/go';
 import { LuUsers } from 'react-icons/lu';
 
-
-
 export default function Profile() {
 
   const { user } = useContext(AuthContext);
@@ -57,11 +55,9 @@ export default function Profile() {
     setPhone(value);
   };
 
-  
-
   return (
     <>  
-    <Profile_header title={fullname}/>
+    <Profile_header />
     <Container>
       <Row>
             <div className='pt-2 text-md-start text-sm-center text-center'>

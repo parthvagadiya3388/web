@@ -12,7 +12,7 @@ import Footer from "./footer";
 
 const initialValues = {
   name: "",
-  position: "",
+  position: "", 
   phone: "",
   email: "",
   address: "",

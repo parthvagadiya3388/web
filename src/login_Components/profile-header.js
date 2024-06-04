@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Button, Col, Container, Offcanvas, Row, ListGroup } from 'react-bootstrap';
 import { FaCaretDown, FaSignOutAlt } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
-import img4 from '../assets/images/profile.jpeg'; // Replace this with your actual image path
+import img4 from '../assets/images/profile.jpeg'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthContext } from './AuthContext';
 import { setFirstName, setLastName } from '../redux/reducer/nameSlice';
@@ -16,7 +16,7 @@ export default function ProfileHeader(props) {
   const dispatch = useDispatch();
   const firstName = useSelector((state) => state.name.firstName);
   const lastName = useSelector((state) => state.name.lastName);
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext); 
 
   useEffect(() => {
     const [first, last] = user.name.split(' ');

@@ -10,7 +10,7 @@ import { AuthContext} from "../login_Components/AuthContext";
 
 export const initialValues = {
   email: "parth@example.com",
-  password: "5555",
+  password: "123",
 }
 
 export default function Welcome1() {

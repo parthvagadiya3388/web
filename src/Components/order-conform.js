@@ -15,7 +15,7 @@ export default function Order_Conform() {
   if (!selectedProduct) {
     return (
       <Container>
-        <Row>
+        <Row> 
           <Col>
             <p>Loading...</p>
           </Col>

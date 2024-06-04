@@ -7,7 +7,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
-export default function Customer_page() {
+export default function Employe_page() {
   return (
     <div>
       <Navbar/>  

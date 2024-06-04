@@ -5,11 +5,10 @@ export const ProductContext = createContext();
 export const ProductProvider = ({ children }) => {
   const [selectedProduct, setSelectedProduct] = useState(() => {
 
-    
+
     const savedProduct = localStorage.getItem('selectedProduct');
     return savedProduct ? JSON.parse(savedProduct) : null;
   });
-
 
   useEffect(() => {
     if (selectedProduct) {
